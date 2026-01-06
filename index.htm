@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aissata Dia - Portfolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/site.css" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f1f5f9;
+            --text-gray: #cbd5e1;
+        }
+
+        body {
+            color: var(--text-light);
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e1b4b 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: slideRight 1s ease forwards;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            position: relative;
+            animation: slideTop 0.5s ease forwards;
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .home {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 10% 80px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .home-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .home-content h3 {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--text-gray);
+            animation: slideBottom 1s ease forwards;
+        }
+
+        .home-content h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin: 10px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideRight 1s ease forwards;
+        }
+
+        .home-content h3 span {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .home-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 20px 0;
+            color: var(--text-gray);
+            animation: slideLeft 1s ease forwards;
+        }
+
+        .home-sci {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .home-sci a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            font-size: 24px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            animation: slideLeft 1s ease forwards;
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        .home-sci a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-box {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50px;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+            animation: slideTop 1s ease forwards;
+        }
+
+        .btn-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        .home-image {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+
+        .image-border {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            /*animation: rotate 8s linear infinite;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.5);
+        }
+
+        .image-border img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--dark-bg);
+        }
+
+        .about {
+            display: none;
+            padding: 100px 10%;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about.visible {
+            display: flex;
+        }
+
+        .about-img {
+            width: 350px;
+            height: 350px;
+            flex-shrink: 0;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 700px;
+        }
+
+        .about-text h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: slideRight 1s ease forwards;
+        }
+
+        .about-text h2 span {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text h4 {
+            font-size: 24px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            animation: slideBottom 1s ease forwards;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            animation: slideLeft 1s ease forwards;
+        }
+
+
+        .fs-5.fw-bold {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        #blocNom .fs-1 {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-white {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            color: white !important;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            background: rgba(255, 255, 255, 0.2);
+            height: 10px;
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--accent-color), white);
+            border-radius: 10px;
+        }
+
+        .sub-title {
+            text-align: center;
+            font-size: 56px;
+            padding: 80px 0 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container1 {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .heading {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .barre {
+            margin: 30px 0;
+        }
+
+        .barre i {
+            font-size: 32px;
+            margin-right: 15px;
+        }
+
+        .progress-line {
+            height: 8px;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-line span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+            position: relative;
+            animation: progressAnimation 2s ease forwards;
+        }
+
+        .progress-line span::after {
+            content: attr(data-progress);
+            position: absolute;
+            right: 10px;
+            top: -30px;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        .radial-barres {
+            display: inline-block;
+            margin:10px 20px;
+            text-align: center;
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .radial-barres svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* SVG track (background circle) */
+        .svg-track {
+            fill: none;
+            stroke: rgba(99, 102, 241, 0.2);
+            stroke-width: 10;
+        }
+
+        /* SVG progress path */
+        .svg-path {
+            fill: none;
+            stroke: var(--primary-color);
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 188;
+            animation: pathAnimation 1.2s ease forwards;
+        }
+
+        .svg-path-1 { animation-delay: 0.2s; }
+
+        .pourcentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-light);
+            pointer-events: none;
+        }
+
+        .text {
+            margin-top: 10px;
+            font-size: 16px;
+            color: var(--text-gray);
+        }
+
+        @keyframes slideRight {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideLeft {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideTop {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideBottom {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes progressAnimation {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes pathAnimation {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .home {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-content {
+                max-width: 100%;
+            }
+
+            .home-content h1 {
+                font-size: 40px;
+            }
+
+            .home-image {
+                width: 300px;
+                height: 300px;
+                margin: 40px auto 0;
+            }
+
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .container1 {
+                width: 100%;
+                margin: 20px 0;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Portfolio</a>
+        <nav class="navbar">
+            <a href="#" style="--i:1" class="active">Accueil</a>
+            <div class="dropdown">
+                <a href="#competences" style="--i:2">Compétences</a>
+            </div>
+            <a href="../cv/CV_Aïssata DIA.pdf" class="btn-box" target="_blank"style="--i:3">CV</a>
+            <a href="#projets" style="--i:4">Projets</a>
+            <a href="https://v3.uidt.sn/" style="--i:5">UIDT</a>
+            <a href="mailto:aissatadia1001@gmail.com" class="btn-box" style="--i:6">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-content">
+            <h3>Salut, je suis</h3>
+            <h1>AISSATA DIA</h1>
+            <h3>et je suis <span class="text"></span></h3>
+            <p>Technicienne supérieure en Géomatique, formée à l'UFR des Sciences de l'Ingénieur de l'Université Iba Der Thiam de Thiès,
+avec un intérêt particulier pour la sécurité et la fiabilité des systèmes d’information géospatiaux.</p>
+                <!--
+            <div class="home-sci">
+                <a href="https://www.facebook.com/?locale=fr_FR" style="--i:7"><i class='bx bxl-facebook'></i></a>
+                <a href="#" style="--i:8"><i class='bx bxl-instagram'></i></a>
+                <a href="#" style="--i:9"><i class='bx bxl-whatsapp'></i></a>
+                <a href="#" style="--i:10"><i class='bx bxl-tiktok'></i></a>
+            </div>-->
+            <a href="#" class="btn-box" id="toggleButton">En savoir plus sur moi</a>
+        </div>
+        <div class="home-image">
+            <div class="image-border">
+                <img src="../image/image1.jpg" alt="Photo de profil d'Aissata Dia">
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <div class="image-border">
+                <img src="../image/image1.jpg" alt="Aissata Dia">
+            </div>
+        </div>
+        <div class="about-text">
+            <h2>À propos de <span>Moi</span></h2>
+            <h4>Géomaticienne et Développement de Systèmes d’Information</h4>
+            <p>Je suis une technicienne supérieure en géomatique passionnée et déterminée. Diplômée en Géomatique, j’ai développé au fil de mon parcours une véritable fascination pour la cartographie, la géolocalisation et l’ensemble des technologies permettant de comprendre, analyser et améliorer notre environnement. <br>
+
+                La géomatique s’est imposée à moi comme une évidence, puisqu’elle combine science, technologie et vision pour construire le monde de demain. Grâce à ma formation, j’ai acquis des compétences solides dans des domaines variés tels que la cartographie, les systèmes d'information géographique (SIG) et l’analyse de données géospatiales. <br>
+
+                Mais mon ambition dépasse la simple maîtrise technique. Je souhaite mettre mes compétences au service de projets à fort impact, notamment dans les domaines du développement durable, de l’aménagement du territoire et de la gestion des ressources naturelles. Je suis convaincue que la géomatique constitue un levier essentiel pour relever de nombreux défis contemporains : gestion des risques naturels, urbanisation rapide, préservation de l’environnement, et bien d’autres encore. <br>
+
+                Mon objectif est de contribuer au développement et à la valorisation des technologies géospatiales en Afrique et au-delà, en favorisant des solutions innovantes, accessibles et adaptées aux réalités locales. Je souhaite également devenir une référence dans mon domaine, capable d’inspirer et d’accompagner les jeunes vers les métiers scientifiques et techniques. <br>
+
+                Je rêve grand, et chaque jour je m’engage avec détermination pour transformer ces aspirations en réalité.
+                <br><br>
+<strong>
+Je m’intéresse également à la protection des données, à la sécurité des systèmes d’information
+et au développement de solutions numériques fiables adaptées aux contextes africains.
+</strong>
+            </p>
+        </div>
+    </section>
+
+    <h1 class="sub-title" id="competences">Mes <span>Compétences</span></h1>
+
+    <section style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div class="container1">
+            <h1 class="heading">Compétences Techniques</h1>
+            <div class="barres-technique">
+                <div class="barre">
+                    <i style="color: #c95d2e" class='bx bxl-html5'></i>
+                    <span>HTML</span>
+                    <div class="progress-line html">
+                        <span data-progress="90%" style="width: 90%"></span>
+                    </div>
+                </div>
+                <div class="barre">
+                    <i style="color: #147bbc" class='bx bxl-css3'></i>
+                    <span>CSS</span>
+                    <div class="progress-line css">
+                        <span data-progress="60%" style="width: 60%"></span>
+                    </div>
+                </div>
+                <div class="barre">
+                    <i style="color: #b0bc1e" class='bx bxl-javascript'></i>
+                    <span>Javascript</span>
+                    <div class="progress-line javascript">
+                        <span data-progress="50%" style="width: 50%"></span>
+                    </div>
+                </div>
+                <div class="barre">
+                    <i style="color: #cb2ec9" class='bx bxl-python'></i>
+                    <span>Python</span>
+                    <div class="progress-line python">
+                        <span data-progress="75%" style="width: 75%"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container1">
+    <h1 class="heading">Sécurité et Données</h1>
+    <ul style="color: var(--text-gray); line-height: 2;">
+        <li>Sensibilisation à la protection des données</li>
+        <li>Gestion des accès aux bases de données</li>
+        <li>Bonnes pratiques de sécurité applicative</li>
+        <li>Fiabilité et intégrité des systèmes d’information</li>
+    </ul>
+</div>
+
+        <div class="container1">
+            <h1 class="heading">Compétences Professionnelles</h1>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <div class="radial-barres">
+                    <svg viewBox="0 0 200 200">
+                        <circle class="svg-track" cx="100" cy="100" r="30"></circle>
+                        <circle class="svg-path svg-path-1" cx="100" cy="100" r="30" style="stroke-dashoffset: 18.8;"></circle>
+                    </svg>
+                    <div class="pourcentage">90%</div>
+                    <div class="text">Communication</div>
+                </div>
+                <div class="radial-barres">
+                    <svg viewBox="0 0 200 200">
+                        <circle class="svg-track" cx="100" cy="100" r="30"></circle>
+                        <circle class="svg-path svg-path-1" cx="100" cy="100" r="30" style="stroke-dashoffset: 37.6;"></circle>
+                    </svg>
+                    <div class="pourcentage">80%</div>
+                    <div class="text">Cartographie</div>
+                </div>
+                <div class="radial-barres">
+                    <svg viewBox="0 0 200 200">
+                        <circle class="svg-track" cx="100" cy="100" r="30"></circle>
+                        <circle class="svg-path svg-path-1" cx="100" cy="100" r="30" style="stroke-dashoffset: 56.55;"></circle>
+                    </svg>
+                    <div class="pourcentage">70%</div>
+                    <div class="text">Informatique</div>
+                </div>
+                <div class="radial-barres">
+                    <svg viewBox="0 0 200 200">
+                        <circle class="svg-track" cx="100" cy="100" r="30"></circle>
+                        <circle class="svg-path svg-path-1" cx="100" cy="100" r="30" style="stroke-dashoffset: 65.975;"></circle>
+                    </svg>
+                    <div class="pourcentage">65%</div>
+                    <div class="text">Aménagement</div>
+                </div>
+    </div>
+   </section>
+   <h1 class="sub-title" id="projets">Mes <span>Projets</span></h1>
+
+<section style="display: flex; flex-wrap: wrap; justify-content: center;">
+    
+    <!-- Projet 1 -->
+    <div class="container1" style="max-width: 450px;">
+        <h2 class="heading">Application SIG et Données</h2>
+        <p style="color: var(--text-gray); line-height: 1.8;">
+            Application web permettant la collecte, la gestion et la visualisation
+            de données géospatiales à l’aide de cartes interactives.
+            <br><br>
+            <strong>Technologies :</strong> HTML, CSS, JavaScript, QGIS, PostgreSQL/PostGIS
+            <br>
+            <strong>Aspect sécurité :</strong> structuration des données, contrôle d’accès,
+            fiabilité des informations.
+        </p>
+    </div>
+
+    <!-- Projet 2 -->
+    <div class="container1" style="max-width: 450px;">
+        <h2 class="heading">Système de gestion d’utilisateurs</h2>
+        <p style="color: var(--text-gray); line-height: 1.8;">
+            Conception d’un système simple de gestion des utilisateurs
+            avec rôles et accès différenciés (administrateur / utilisateur).
+            <br><br>
+            <strong>Technologies :</strong> HTML, CSS, JavaScript, Python
+            <br>
+            <strong>Aspect sécurité :</strong> gestion des accès,
+            protection des données sensibles.
+        </p>
+    </div>
+
+</section>
+
+    
+
+
+    <script src="../js/site.js"></script>
+</body>
+</html>

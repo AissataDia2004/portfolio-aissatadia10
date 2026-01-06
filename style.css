@@ -1,0 +1,570 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    color: #ededed;
+    background-color: #121212;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: #051129;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    position: relative;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 2s ease forwards;
+    align-self: center;
+}
+
+/* Styles de base */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 20px;
+    transition: .3s;
+    position: relative;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.navbar a:hover {
+    color: #0ef;
+}
+
+/* Styles pour le menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    /* Place le sous-menu juste en dessous */
+    left: 0;
+    background-color: #222;
+    /* Fond du menu déroulant */
+    padding: 10px 0;
+    display: none;
+    /* Caché par défaut */
+    flex-direction: column;
+    min-width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    color:#222;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    transition: all 0.3s ease;
+    /* Transition pour l'animation */
+}
+
+.dropdown-menu a:hover {
+    background-color: #0ef;
+    /* Couleur au survol */
+}
+
+/* Afficher le menu déroulant */
+.dropdown:hover .dropdown-menu {
+    display: flex;
+    /* Affiche le sous-menu */
+}
+
+.home {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    height: 100vh;
+    background: url('../image/background.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.home-content {
+    max-width: 50%;
+    z-index: 2;
+    /* Assure que le texte est au-dessus de l'image */
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    /* Centre parfaitement le texte */
+
+    position: absolute;
+    /* Superpose le texte à l'image */
+    text-align: left;
+    /* Alignement du texte à gauche */
+}
+
+.home-content h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 5px 0;
+    /* Réduction des marges pour rapprocher les lignes */
+    opacity: 0;
+    animation: sliderBottom 1s ease forwards;
+    animation-delay: .7s;
+}
+.home-content h3:mth-of-type(2) {
+    margin-bottom: 30px;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .7s;
+
+}
+
+.home-content h3 span {
+    color: #0ef;
+}
+
+.home-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 5px 0;
+    opacity: 0;
+    animation: slideRight 2s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-content p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 5px 0;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i))
+}
+
+.home-sci a:hover {
+    background: #0ef;
+    color: #081b29;
+    box-shadow: 0 0 20px #0ef;
+}
+
+.btn-box {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #0ef;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #081b29;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px #0ef, 0 0 25px #0ef;
+}
+
+.btn-box:hover {
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan, 0 0 200px cyan;
+}
+
+.home-image {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #00f, #0ff, #f0f, #f00);
+    animation: glow 5s linear infinite;
+    margin-left: 550px;
+    /* Colle l'image aux écritures */
+
+}
+
+.image-border {
+    position: relative;
+    width: 150%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00f, #0f0, #f0f);
+    padding: 5px;
+    /* Espace pour l'effet lumineux */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
+        0 0 60px rgba(0, 255, 255, 0.3),
+        0 0 90px rgba(0, 255, 255, 0.2);
+    animation: glow 3s infinite;
+}
+
+.image-border img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem; /* Contrôle l'espace entre l'image et le texte */
+    padding: 2rem;
+    background: #8c8ddf; /* Couleur de fond similaire */
+    color: #fff;
+    min-height: 100vh; /* Section pleine hauteur */
+}
+
+.about-img {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;  /* Pour avoir une forme ronde */
+    background: linear-gradient(135deg, #00f, #0ff, #f0f, #f00);
+    animation: glow 5s linear infinite;  /* Ajout de l'animation de l'effet lumineux */
+}
+
+.image-border {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0ff, #f0f, #00f); /* Effet lumineux */
+    padding: 5px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5),
+                0 0 40px rgba(0, 255, 255, 0.3),
+                0 0 60px rgba(0, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-border img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Assure que l'image est bien centrée */
+}
+
+.about-text {
+    flex: 1;  /* Le texte prend l'espace disponible à droite */
+    max-width: 600px;  /* Limite la largeur du texte */
+    text-align: left;
+    display: none;
+    transform: translateX(30px);
+    transition: opacity 1s ease transform 1s ease;  /* Animation pour opacité et translation */
+}
+.about-text p{
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+/* Lorsque l'élément devient visible au défilement */
+.about-text.visible {
+    opacity: 1;
+    transform: translateY(0);  /* Ramène le texte à sa position originale */
+}
+.about-text h2{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideRight 2s ease forwards;
+    animation-delay: 1s;
+}
+
+.about-text h2 span{
+    color: #0ef;
+}
+
+.about-text h4{
+    font-size: 29px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.7;
+    margin: 15px 0 30px;
+    opacity: 0;
+    animation: sliderBottom 1s ease forwards;
+    animation-delay: .7s;
+}
+.about-text p{
+    line-height: 1.6;
+    font-size: 1rem;
+    color: aliceblue;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block; /* ou block en fonction du contenu */
+    animation: fadeIn 0.5s ease;
+}
+
+
+.sub-title{
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 70px;
+}
+
+.sub-title span{
+    color: #0ef;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+}
+.container1{
+    width: 600px;
+    height: 500px;
+    padding: 75px 90px;
+    margin-left: 120px;
+}
+.heading{
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 5px;
+    margin-bottom: 50px;
+}
+
+.barre{
+    font-size: 23px;
+}
+.barres-technique .barre{
+    margin-top: 40px 0;
+}
+.barres-technique .barre:first-child{
+    margin-top: 0; 
+}
+.barres-technique .barre:last-child{
+    margin-bottom: 0;
+}
+.barres-technique .barre .info{
+    margin-bottom: 5px;
+}
+.barres-technique .barre .info span{
+    font-size: 17px;
+    font-weight: 500;
+    animation: showtext 0.5s 1s linear forwards;
+    opacity: 0;
+}
+
+@keyframes showtext {
+    100% {
+        opacity: 1;
+    }
+}
+
+.barres-technique .barre .progress-line{
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 5px;
+    background-color: #000000;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: progressAnimation 2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; /* Animation modifiée */
+}
+
+@keyframes progressAnimation {
+    100% {
+        transform: scaleX(1);
+    }
+}
+.barres-technique .barre .progress-line span{
+    height: 100%;
+    display: block;
+    background-color: #0ef;
+    position: absolute;
+    border-radius: 10px;
+    animation: animate 1s cubic-bezier(1,0,0,5,1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.progress-line.html span {
+    width: 90%;
+    animation-delay: 0s;
+}
+
+.progress-line.css span {
+    width: 60%;
+    animation-delay: 0.2s; /* Un léger délai pour chaque barre */
+}
+
+.progress-line.javascript span {
+    width: 50%;
+    animation-delay: 0.4s;
+}
+
+.progress-line.python span {
+    width: 75%;
+    animation-delay: 0.6s;
+}
+.progress-line span::after{
+    position: absolute;
+    padding: 1px 8px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    top: -20px;
+    right: -20px;
+    animation: showtext 0.5s 1.5s linear forwards;
+    opacity: 0;
+}
+
+.progress-line.html span::after{
+    content: "90%";
+}
+.progress-line.css span::after{
+    content: "60%";
+}
+.progress-line.javascript span::after{
+    content: "50%";
+}
+.progress-line.python span::after{
+    content: "75%";
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Animation pour un effet lumineux autour de l'image */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
+            0 0 60px rgba(0, 255, 255, 0.3),
+            0 0 90px rgba(0, 255, 255, 0.2);
+        background-position: 0% 50%;
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(255, 0, 255, 0.6),
+            0 0 80px rgba(255, 0, 255, 0.4),
+            0 0 120px rgba(255, 0, 255, 0.3);
+        background-position: 100% 50%;
+    }
+
+    100% {
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
+            0 0 60px rgba(0, 255, 255, 0.3),
+            0 0 90px rgba(0, 255, 255, 0.2);
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideTop {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes sliderBottom {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
