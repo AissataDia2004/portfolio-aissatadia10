@@ -483,53 +483,441 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .home {
-                flex-direction: column;
-                text-align: center;
-            }
+       /* ===================== HAMBURGER MENU STYLES ===================== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 101;
+}
 
-            .home-content {
-                max-width: 100%;
-            }
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
 
-            .home-content h1 {
-                font-size: 40px;
-            }
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
 
-            .home-image {
-                width: 300px;
-                height: 300px;
-                margin: 40px auto 0;
-            }
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
 
-            .about {
-                flex-direction: column;
-                text-align: center;
-            }
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
 
-            .container1 {
-                width: 100%;
-                margin: 20px 0;
-                padding: 30px 20px;
-            }
-        }
+/* ===================== MEDIA QUERIES RESPONSIVE ===================== */
+
+/* Tablettes et petits écrans (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .header {
+        padding: 15px 5%;
+    }
+
+    .home {
+        padding: 100px 5% 60px;
+    }
+
+    .home-content {
+        max-width: 55%;
+    }
+
+    .home-content h1 {
+        font-size: 52px;
+    }
+
+    .home-image {
+        width: 350px;
+        height: 350px;
+        margin-left: 400px;
+    }
+
+    .about {
+        padding: 80px 5%;
+        gap: 40px;
+    }
+
+    .about-img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .container1 {
+        width: calc(50% - 40px);
+        margin: 20px;
+        padding: 40px;
+    }
+}
+
+/* Tablettes en mode portrait (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Header avec menu hamburger */
+    .header {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(5, 17, 41, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 30px;
+        transition: 0.3s;
+        gap: 0;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .navbar a {
+        font-size: 18px;
+        padding: 15px 20px;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        animation: none;
+        opacity: 1;
+    }
+
+    .navbar .btn-box {
+        margin: 20px auto;
+        width: 80%;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        position: static;
+        background-color: rgba(34, 34, 34, 0.9);
+        box-shadow: none;
+    }
+
+    /* Section Home - GARDE LE LAYOUT EN LIGNE */
+    .home {
+        flex-direction: row;
+        align-items: center;
+        padding: 120px 5% 60px;
+        height: auto;
+        min-height: 80vh;
+    }
+
+    .home-content {
+        max-width: 55%;
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        text-align: left;
+    }
+
+    .home-content h3 {
+        font-size: 18px;
+    }
+
+    .home-content h1 {
+        font-size: 36px;
+    }
+
+    .home-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .home-image {
+        width: 280px;
+        height: 280px;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .home-sci {
+        justify-content: flex-start;
+    }
+
+    .home-sci a {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* Section About */
+    .about {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 5%;
+    }
+
+    .about-img {
+        width: 280px;
+        height: 280px;
+    }
+
+    .about-text {
+        max-width: 100%;
+    }
+
+    .about-text h2 {
+        font-size: 36px;
+    }
+
+    .about-text h4 {
+        font-size: 22px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+    }
+
+    /* Compétences */
+    .sub-title {
+        font-size: 40px;
+        padding: 60px 0 30px;
+    }
+
+    .container1 {
+        width: 100%;
+        margin: 20px 0;
+        padding: 30px 20px;
+    }
+
+    .heading {
+        font-size: 26px;
+    }
+
+    .barre {
+        font-size: 18px;
+    }
+
+    .radial-barres {
+        width: 120px;
+        height: 120px;
+        margin: 10px 15px;
+    }
+
+    .pourcentage {
+        font-size: 18px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+}
+
+/* Smartphones (max-width: 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 3%;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .navbar {
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
+
+    .navbar a {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    .btn-box {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Section Home - GARDE LE LAYOUT EN LIGNE */
+    .home {
+        padding: 100px 3% 40px;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .home-content {
+        max-width: 52%;
+    }
+
+    .home-content h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .home-content h1 {
+        font-size: 28px;
+        margin: 5px 0;
+    }
+
+    .home-content p {
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 10px 0;
+    }
+
+    .home-image {
+        width: 180px;
+        height: 180px;
+        margin-left: 10px;
+    }
+
+    .home-sci {
+        margin: 15px 0;
+    }
+
+    .home-sci a {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        margin: 15px 10px 15px 0;
+    }
+
+    /* Section About */
+    .about {
+        padding: 40px 3%;
+    }
+
+    .about-img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .about-text h4 {
+        font-size: 18px;
+    }
+
+    .about-text p {
+        font-size: 14px;
+    }
+
+    /* Compétences */
+    .sub-title {
+        font-size: 32px;
+        padding: 40px 0 20px;
+    }
+
+    .container1 {
+        padding: 25px 15px;
+    }
+
+    .heading {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    .barre {
+        font-size: 16px;
+        margin: 20px 0;
+    }
+
+    .barre i {
+        font-size: 24px;
+    }
+
+    .radial-barres {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+    }
+
+    .pourcentage {
+        font-size: 16px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+}
+
+/* Très petits écrans (max-width: 360px) */
+@media (max-width: 360px) {
+    .home {
+        gap: 10px;
+    }
+
+    .home-content {
+        max-width: 50%;
+    }
+
+    .home-content h1 {
+        font-size: 24px;
+    }
+
+    .home-content h3 {
+        font-size: 12px;
+    }
+
+    .home-content p {
+        font-size: 11px;
+    }
+
+    .home-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .sub-title {
+        font-size: 28px;
+    }
+
+    .radial-barres {
+        width: 90px;
+        height: 90px;
+    }
+}
     </style>
 </head>
 <body>
-    <header class="header">
-        <a href="#" class="logo">Portfolio</a>
-        <nav class="navbar">
-            <a href="#" style="--i:1" class="active">Accueil</a>
-            <div class="dropdown">
-                <a href="#competences" style="--i:2">Compétences</a>
-            </div>
-            <a href="cv/CV_Aïssata DIA.pdf" class="btn-box" target="_blank"style="--i:3">CV</a>
-            <a href="#projets" style="--i:4">Projets</a>
-            <a href="https://v3.uidt.sn/" style="--i:5">UIDT</a>
-            <a href="mailto:aissatadia1001@gmail.com" class="btn-box" style="--i:6">Contact</a>
-        </nav>
-    </header>
+   <header class="header">
+    <a href="#" class="logo">Portfolio</a>
+    
+    <!-- Bouton Hamburger -->
+    <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <nav class="navbar">
+        <a href="#" style="--i:1" class="active">Accueil</a>
+        <div class="dropdown">
+            <a href="#competences" style="--i:2">Compétences</a>
+        </div>
+        <a href="../cv/CV_Aïssata DIA.pdf" class="btn-box" target="_blank" style="--i:3">CV</a>
+        <a href="#projets" style="--i:4">Projets</a>
+        <a href="https://v3.uidt.sn/" style="--i:5">UIDT</a>
+        <a href="mailto:aissatadia1001@gmail.com" class="btn-box" style="--i:6">Contact</a>
+    </nav>
+</header>
 
     <section class="home">
         <div class="home-content">
@@ -706,6 +1094,7 @@ et au développement de solutions numériques fiables adaptées aux contextes af
 </body>
 
 </html>
+
 
 
 
