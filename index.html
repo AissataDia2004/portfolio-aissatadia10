@@ -939,74 +939,6 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
         }
 
-        /* ========== SECTION STATISTIQUES ========== */
-        .stats-section {
-            padding: 80px 10%;
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 30px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .stat-card:hover::before {
-            left: 100%;
-        }
-
-        .stat-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-        }
-
-        .stat-icon {
-            font-size: 48px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-        }
-
-        .stat-number {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 10px;
-            counter-reset: number;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            color: var(--text-gray);
-        }
-
         /* ========== TIMELINE (PARCOURS) ========== */
         .timeline-section {
             padding: 80px 10%;
@@ -1307,32 +1239,6 @@ et au développement de solutions numériques fiables adaptées aux contextes af
         <i class='bx bx-up-arrow-alt'></i>
     </div>
 
-    <!-- ========== SECTION STATISTIQUES ========== -->
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-card fade-in" style="animation-delay: 0.1s;">
-                <i class='bx bx-briefcase stat-icon'></i>
-                <div class="stat-number" data-target="2">0</div>
-                <div class="stat-label">Projets Réalisés</div>
-            </div>
-            <div class="stat-card fade-in" style="animation-delay: 0.2s;">
-                <i class='bx bx-trophy stat-icon'></i>
-                <div class="stat-number" data-target="1">0</div>
-                <div class="stat-label">Hackathons</div>
-            </div>
-            <div class="stat-card fade-in" style="animation-delay: 0.3s;">
-                <i class='bx bx-map stat-icon'></i>
-                <div class="stat-number" data-target="10">0</div>
-                <div class="stat-label">Cartes Créées</div>
-            </div>
-            <div class="stat-card fade-in" style="animation-delay: 0.4s;">
-                <i class='bx bx-code-alt stat-icon'></i>
-                <div class="stat-number" data-target="1000">0</div>
-                <div class="stat-label">Heures de Code</div>
-            </div>
-        </div>
-    </section>
-
     <!-- ========== TIMELINE PARCOURS ========== -->
     <section class="timeline-section">
         <h2 class="timeline-title">Mon Parcours</h2>
@@ -1519,6 +1425,7 @@ et au développement de solutions numériques fiables adaptées aux contextes af
 </body>
 
 </html>
+
 
 
 
