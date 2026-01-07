@@ -894,6 +894,334 @@
         height: 90px;
     }
 }
+
+        /* ========== SCROLL INDICATOR ========== */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 1000;
+            transition: width 0.3s;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        /* ========== BOUTON RETOUR EN HAUT ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+        }
+
+        /* ========== SECTION STATISTIQUES ========== */
+        .stats-section {
+            padding: 80px 10%;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 48px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            counter-reset: number;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-gray);
+        }
+
+        /* ========== TIMELINE (PARCOURS) ========== */
+        .timeline-section {
+            padding: 80px 10%;
+            position: relative;
+        }
+
+        .timeline-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 50%;
+            padding: 0 40px;
+            opacity: 0;
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .timeline-title-item {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .timeline-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ========== SECTION COMPÉTENCES CIRCULAIRES ========== */
+        .skills-circle-section {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .skills-circle-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .skill-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .skill-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .skill-circle circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+        }
+
+        .skill-circle .bg {
+            stroke: rgba(99, 102, 241, 0.2);
+        }
+
+        .skill-circle .progress {
+            stroke: var(--primary-color);
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            animation: fillCircle 2s ease forwards;
+        }
+
+        @keyframes fillCircle {
+            to {
+                stroke-dashoffset: var(--dashoffset);
+            }
+        }
+
+        .skill-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .skill-percentage {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .skill-name {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-top: 5px;
+        }
+/* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 60px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 10px;
+                right: auto;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -966,6 +1294,103 @@ Je m’intéresse également à la protection des données, à la sécurité des
 et au développement de solutions numériques fiables adaptées aux contextes africains.
 </strong>
             </p>
+        </div>
+    </section>
+     <!-- Indicateur de scroll -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Particules d'arrière-plan -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Bouton retour en haut -->
+    <div class="back-to-top" id="backToTop">
+        <i class='bx bx-up-arrow-alt'></i>
+    </div>
+
+    <!-- ========== SECTION STATISTIQUES ========== -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card fade-in" style="animation-delay: 0.1s;">
+                <i class='bx bx-briefcase stat-icon'></i>
+                <div class="stat-number" data-target="2">0</div>
+                <div class="stat-label">Projets Réalisés</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.2s;">
+                <i class='bx bx-trophy stat-icon'></i>
+                <div class="stat-number" data-target="1">0</div>
+                <div class="stat-label">Hackathons</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.3s;">
+                <i class='bx bx-map stat-icon'></i>
+                <div class="stat-number" data-target="10">0</div>
+                <div class="stat-label">Cartes Créées</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.4s;">
+                <i class='bx bx-code-alt stat-icon'></i>
+                <div class="stat-number" data-target="1000">0</div>
+                <div class="stat-label">Heures de Code</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TIMELINE PARCOURS ========== -->
+    <section class="timeline-section">
+        <h2 class="timeline-title">Mon Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 - Actuellement</div>
+                    <h3 class="timeline-title-item">Stage - Direction Régionale de l'Urbanisme de Thiés</h3>
+                    <p class="timeline-description">
+                        Développement d'un site web institutionnel pour la gestion des documents d'urbanisme et des demandes d'autorisation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2025</div>
+                    <h3 class="timeline-title-item">Hackathon Sonatel Ci Sen Gox</h3>
+                    <p class="timeline-description">
+                        Participation et développement d'une solution innovante.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2022 - 2025</div>
+                    <h3 class="timeline-title-item">Formation Géomatique - UFR Sciences de l'Ingénieur</h3>
+                    <p class="timeline-description">
+                        Université Iba Der Thiam de Thiès. Formation en systèmes d'information géographique, cartographie et développement web.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2023</div>
+                    <h3 class="timeline-title-item">Premiers projets en SIG</h3>
+                    <p class="timeline-description">
+                        Découverte de la géomatique et réalisation de premières cartes interactives avec QGIS.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2022</div>
+                    <h3 class="timeline-title-item">Baccalauréat scientifique</h3>
+                    <p class="timeline-description">
+                        Lycée Mamadou Amadou Déme, Sokone.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1094,6 +1519,7 @@ et au développement de solutions numériques fiables adaptées aux contextes af
 </body>
 
 </html>
+
 
 
 
