@@ -107,3 +107,102 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+ // ========== PARTICULES D'ARRIÈRE-PLAN ==========
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // ========== INDICATEUR DE SCROLL ==========
+        function updateScrollIndicator() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollIndicator').style.width = scrolled + '%';
+        }
+
+        // ========== BOUTON RETOUR EN HAUT ==========
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            updateScrollIndicator();
+            
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== ANIMATION DES CHIFFRES ==========
+        function animateNumbers() {
+            const stats = document.querySelectorAll('.stat-number');
+            
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
+
+        // ========== OBSERVER POUR ANIMATIONS ==========
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les éléments de timeline
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+            observer.observe(item);
+        });
+
+        // ========== INITIALISATION ==========
+        window.addEventListener('load', () => {
+            createParticles();
+            
+            // Animation des chiffres au scroll
+            const statsSection = document.querySelector('.stats-section');
+            const statsObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateNumbers();
+                    statsObserver.disconnect();
+                }
+            }, { threshold: 0.5 });
+            
+            statsObserver.observe(statsSection);
+        });
